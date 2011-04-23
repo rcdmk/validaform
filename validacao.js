@@ -64,15 +64,16 @@ function validaform(formulario){
 				marcaDesmarcaCampo(elemento, false);
 				
 				var nomeCampo = (elemento.attributes.name) ? elemento.attributes.name.value : elemento.name;
+				var relCampo = elemento.attributes.rel.value;
 				
 				if (campoAtual != nomeCampo) {
 					campoAtual = nomeCampo;
 					
-					if (elemento.attributes.rel.value.indexOf("#") == 0) {
+					if (relCampo.indexOf("#") == 0) {
 						// validação de vazio (obrigatório)
 						
 						if (((tipoCampo == "text" || tipoCampo == "textarea" || tipoCampo == "file" || tipoCampo == "password" || tipoCampo.indexOf("select") == 0) && elemento.value == "") || (tipoCampo.indexOf("select") == 0 && (elemento.selectedIndex) ? elemento.selectedIndex == -1 : false)) {
-							msg += '- Informe ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + '.\n';
+							msg += '- Informe ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + '.\n';
 							pass = false;
 							marcaDesmarcaCampo(elemento, true);
 							if (!campofoco) campofoco = elemento;
@@ -89,7 +90,7 @@ function validaform(formulario){
 							}
 							
 							if (!passOpcoes) {
-								msg += '- Informe ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + '.\n';
+								msg += '- Informe ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + '.\n';
 								pass = false;
 								marcaDesmarcaCampo(elemento, true);
 								if (!campofoco) campofoco = elemento;
@@ -100,11 +101,11 @@ function validaform(formulario){
 					// Para otimizar o desempenho, só valida os formatos se passar por todos os obrigatórios
 					if (pass && elemento.value != "" && (tipoCampo == "text" || tipoCampo == "textarea" || tipoCampo == "password")) {
 						// Tamanho =
-						if(elemento.attributes.rel.value.indexOf("T") == 1 || elemento.attributes.rel.value.indexOf("T") == 2) {
-							var segundo = elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf("T") + 1, elemento.attributes.rel.value.indexOf(' ', 1));
+						if(relCampo.indexOf("T") == 1 || relCampo.indexOf("T") == 2) {
+							var segundo = relCampo.substring(relCampo.indexOf("T") + 1, relCampo.indexOf(' ', 1));
 							
 							if (elemento.value.length != Number(segundo)) {
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' precisa ter ' + segundo + ' caracteres.\n'
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' precisa ter ' + segundo + ' caracteres.\n'
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -112,11 +113,11 @@ function validaform(formulario){
 						}
 						
 						// Comparação =
-						if(elemento.attributes.rel.value.indexOf("=") == 1) {
-							var segundo = document.getElementById(elemento.attributes.rel.value.substring(2, elemento.attributes.rel.value.indexOf(' ', 1)));
+						if(relCampo.indexOf("=") == 1) {
+							var segundo = document.getElementById(relCampo.substring(2, relCampo.indexOf(' ', 1)));
 							
 							if (elemento.value != segundo.value) {
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' e ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? segundo.attributes.rel.value.substring(segundo.attributes.rel.value.indexOf(' ', 1)) : segundo.name) + ' não batem.\n'
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' e ' + ((relCamporelCampo != "#") ? segundo.attributes.rel.value.substring(segundo.attributes.rel.value.indexOf(' ', 1)) : segundo.name) + ' não batem.\n'
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -124,11 +125,11 @@ function validaform(formulario){
 						}
 						
 						// Comparação >
-						else if(elemento.attributes.rel.value.indexOf(">") == 1) {
-							var segundo = document.getElementById(elemento.attributes.rel.value.substring(2, elemento.attributes.rel.value.indexOf(' ', 1)));
+						else if(relCampo.indexOf(">") == 1) {
+							var segundo = document.getElementById(relCampo.substring(2, relCampo.indexOf(' ', 1)));
 	
 							if (isNaN(cnvvl(elemento.value)) || isNaN(cnvvl(segundo.value)) || cnvvl(elemento.value) < cnvvl(segundo.value)) {
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' não pode ser menor que ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? segundo.attributes.rel.value.substring(segundo.attributes.rel.value.indexOf(' ', 1)) : segundo.name) + '.\n'
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' não pode ser menor que ' + ((relCamporelCampo != "#") ? segundo.attributes.rel.value.substring(segundo.attributes.rel.value.indexOf(' ', 1)) : segundo.name) + '.\n'
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -136,11 +137,11 @@ function validaform(formulario){
 						}
 						
 						// Comparação <
-						else if(elemento.attributes.rel.value.indexOf("<") == 1) {
-							var segundo = document.getElementById(elemento.attributes.rel.value.substring(2, elemento.attributes.rel.value.indexOf(' ', 1)));
+						else if(relCampo.indexOf("<") == 1) {
+							var segundo = document.getElementById(relCampo.substring(2, relCampo.indexOf(' ', 1)));
 	
 							if (isNaN(cnvvl(elemento.value)) || isNaN(cnvvl(segundo.value)) || cnvvl(elemento.value) > cnvvl(segundo.value)) {
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' não pode ser maior que ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? segundo.attributes.rel.value.substring(segundo.attributes.rel.value.indexOf(' ', 1)) : segundo.name) + '.\n'
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' não pode ser maior que ' + ((relCamporelCampo != "#") ? segundo.attributes.rel.value.substring(segundo.attributes.rel.value.indexOf(' ', 1)) : segundo.name) + '.\n'
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -148,9 +149,9 @@ function validaform(formulario){
 						}
 						
 						// Data
-						else if (elemento.attributes.rel.value.indexOf("D") == 1) {
+						else if (relCampo.indexOf("D") == 1) {
 							if(!validaData(elemento.value)) {
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' informada é inválida.\n';
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' informada é inválida.\n';
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -158,9 +159,9 @@ function validaform(formulario){
 						}
 						
 						// URL
-						else if(elemento.attributes.rel.value.indexOf("U") == 1) {
+						else if(relCampo.indexOf("U") == 1) {
 							if (!elemento.value.match("^(http|https|ftp)\:// ([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|localhost|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$")){
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' informada é inválida.\n';
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' informada é inválida.\n';
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -168,9 +169,9 @@ function validaform(formulario){
 						}
 						
 						// E-mail
-						else if(elemento.attributes.rel.value.indexOf("@") == 1) {
+						else if(relCampo.indexOf("@") == 1) {
 							if (!elemento.value.match("^([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9]))$")){
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' informado é inválido.\n';
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' informado é inválido.\n';
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -178,9 +179,9 @@ function validaform(formulario){
 						}
 						
 						// CPF ou CPNJ
-						else if(elemento.attributes.rel.value.indexOf("F") == 1 || elemento.attributes.rel.value.indexOf("J") == 1) {
+						else if(relCampo.indexOf("F") == 1 || relCampo.indexOf("J") == 1) {
 							if (!validaCPFouCNPJ(elemento.value)) {
-								msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' informado é inválido.\n';
+								msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' informado é inválido.\n';
 								if (!campofoco) campofoco = elemento;
 								marcaDesmarcaCampo(elemento, true);
 								passCompara = false;
@@ -188,20 +189,20 @@ function validaform(formulario){
 						}
 						
 						// Range(Ex.: "0-120" ou "01/01/2010-31/12/2010")
-						else if(elemento.attributes.rel.value.indexOf("R") == 1) {
-							var rel = elemento.attributes.rel.value;
+						else if(relCampo.indexOf("R") == 1) {
+							var rel = relCampo;
 							var inicio = rel.substring(3, rel.indexOf("-"));
 							var final = rel.substring(rel.indexOf("-") + 1, rel.indexOf(" ", 1));
 							var valor = elemento.value;
 							
 							// Números
-							if (elemento.attributes.rel.value.indexOf("N") == 2) {
+							if (relCampo.indexOf("N") == 2) {
 								inicio = cnvvl(inicio);
 								final = cnvvl(final);
 								valor = cnvvl(valor);
 								
 								if (valor < inicio || valor > final) {
-									msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' está fora do intervalo válido (' + inicio + ' à ' + final + ').\n';
+									msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' está fora do intervalo válido (' + inicio + ' à ' + final + ').\n';
 									if (!campofoco) campofoco = elemento;
 									marcaDesmarcaCampo(elemento, true);
 									passCompara = false;
@@ -209,13 +210,13 @@ function validaform(formulario){
 							}
 							
 							// Datas
-							if (elemento.attributes.rel.value.indexOf("D") == 2) {
+							if (relCampo.indexOf("D") == 2) {
 								inicio = new Date(cnvdtUS(inicio));
 								final = new Date(cnvdtUS(final));
 								valor = new Date(cnvdtUS(valor));
 								
 								if (isNaN(inicio) || isNaN(final) || isNaN(valor) || valor < inicio || valor > final) {
-									msgCompara += '- ' + ((elemento.attributes.rel && elemento.attributes.rel.value != "#") ? elemento.attributes.rel.value.substring(elemento.attributes.rel.value.indexOf(' ', 1)) : elemento.name) + ' está fora do intervalo válido (' + inicio + ' à ' + final + ').\n';
+									msgCompara += '- ' + ((relCamporelCampo != "#") ? relCampo.substring(relCampo.indexOf(' ', 1)) : elemento.name) + ' está fora do intervalo válido (' + inicio + ' à ' + final + ').\n';
 									if (!campofoco) campofoco = elemento;
 									marcaDesmarcaCampo(elemento, true);
 									passCompara = false;
