@@ -1,13 +1,13 @@
-# VALIDA«√O GERAL DE FORMUL¡RIOS POR RCDMK - Agosto de 2010
+# VALIDA√á√ÉO GERAL DE FORMULÔøΩRIOS POR RCDMK
 #
-# USO das validaÁıes
+# USO das valida√ß√µes:
 # Insira um atributo "rel" no campo para validar:
-# 	- Preenchimento obigatÛrio: o primeiro caractere do atributo tem que ser um # e o restante, separado por um espaÁo, ser· utilizado na mensagem de erro. Ex.: rel="# o nome do campo"
-# 	- ValidaÁ„o de e-mail: o segundo caractere do atributo tem que ser @. Ex.: rel="#@ o e-mail de contato" (obrigatÛrio) ou rel=" @ o e-mail de contato" (n„o obrigatÛrio)
-# 	- ValidaÁ„o de CPF: o segundo caractere tem que ser F (de pessoa FÌsica);
-# 	- ValidaÁ„o de CNPJ: o segundo caractere tem que ser J (de pessoa JurÌdica);
-# 	- ValidaÁ„o de tamanho ou comprimento do valor: o segundo caractere tem que ser T e o terceiro o tamanho a ser validado. Ex.: rel="#T9 o telefone"
-# 	- ValidaÁ„o por comparaÁ„o igual (senha e confirmaÁ„o de senha, etc): o segundo caractere tem que ser = e o terceiro o ID do campo a ser comparado. Ex.: rel="#=confirmaSenha a senha"
+# 	- Preenchimento obigat√≥rio: o primeiro caractere do atributo tem que ser um # e o restante, separado por um espa√ßo, ser√° utilizado na mensagem de erro. Ex.: rel="# o nome do campo"
+# 	- Valida√ß√£o de e-mail: o segundo caractere do atributo tem que ser @. Ex.: rel="#@ o e-mail de contato" (obrigat√≥rio) ou rel=" @ o e-mail de contato" (n√£o obrigat√≥rio)
+# 	- Valida√ß√£o de CPF: o segundo caractere tem que ser F (de pessoa F√≠sica);
+# 	- Valida√ß√£o de CNPJ: o segundo caractere tem que ser J (de pessoa Jur√≠dica);
+# 	- Valida√ß√£o de tamanho ou comprimento do valor: o segundo caractere tem que ser T e o terceiro o tamanho a ser validado. Ex.: rel="#T9 o telefone"
+# 	- Valida√ß√£o por compara√ß√£o igual (senha e confirma√ß√£o de senha, etc): o segundo caractere tem que ser = e o terceiro o ID do campo a ser comparado. Ex.: rel="#=confirmaSenha a senha"
 #
 # This is a old project somewhat reinventing the weel to use in any web
 # project for client-side javascript validation of form data.
