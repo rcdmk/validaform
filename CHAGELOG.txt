@@ -1,30 +1,30 @@
-# Versão 2.5 - Março de 2011
-#	- Corrigido um bug com a função de validação de data nos browser não IE;
+# Versao 2.5 - Marco de 2011
+#	- Corrigido um bug com a funcao de validacao de data nos browser nao IE;
 #
-# Versão 2.4 - Janeiro de 2011
-#	- Adicionada uma função para limitar textareas, chamada limitaTextarea;
-#	- Corrigido um bug com a função de formatação, onde a máscara não funcionava no campo;
-#	- Corrigido um bug com as funções de formatação e somente números, que não aceitava copiar e colar usando CTRL+C, CTRL+V, etc;
-#	- Corrigido um bug com as funções de validação, que causavam erros se o tamanho do campo estivesse diferente do especificado;
-#	- Permitido usar a função de validação de tamanho junto com funções de um caractere:
+# Versao 2.4 - Janeiro de 2011
+#	- Adicionada uma funcao para limitar textareas, chamada limitaTextarea;
+#	- Corrigido um bug com a funcao de formatacao, onde a mascara nao funcionava no campo;
+#	- Corrigido um bug com as funcoes de formatacao e somente numeros, que nao aceitava copiar e colar usando CTRL+C, CTRL+V, etc;
+#	- Corrigido um bug com as funcoes de validacao, que causavam erros se o tamanho do campo estivesse diferente do especificado;
+#	- Permitido usar a função de validacao de tamanho junto com funcoes de um caractere:
 #		- Ex.: Para validar um campo de data com 10 catacteres obrigatorios: rel="#DT10 a data de nascimento";
-#	- Restrição para não digitar números: onkeypress="return SemNumeros(this, event);"
+#	- Restricao para nao digitar numeros: onkeypress="return SemNumeros(this, event);"
 #
-# Versão 2.3 - Dezembro de 2010
+# Versao 2.3 - Dezembro de 2010
 # 	- Finalizada a implementação da Range de Números
 # 		- Ex.: Para validar um campo que aceite apenas números de 1 a 10: rel=" RN1-10 o campo";
-#	- Acrescentada a função utilitária numStr para converter números em texto;
+#	- Acrescentada a funcao utilitaria numStr para converter numeros em texto;
 #
-# Versão 2.2 - Novembro de 2010
-#	- Se a validação passar, os botões do formulário são deativados para evitar duplo clique
-# 	- Permitido usar as teclas ENTER, BACKSPACE, DELETE, TAB, F5 e CTRL+C ou V nos campos com restrição de entrada;
-#	- Corrigido bug com navegadores "não IE" nos campos com máscara (não permitia apagar o caractere inserido pela máscara);
-#	- Inclusa a função de completar cracteres:
+# Versao 2.2 - Novembro de 2010
+#	- Se a validacao passar, os botoes do formulario sao deativados para evitar duplo clique
+# 	- Permitido usar as teclas ENTER, BACKSPACE, DELETE, TAB, F5 e CTRL+C ou V nos campos com restricao de entrada;
+#	- Corrigido bug com navegadores "nao IE" nos campos com mascara (nao permitia apagar o caractere inserido pela mascara);
+#	- Inclusa a funcao de completar cracteres:
 #		- completar(texto, tamanho, caractere);
 #		- var ano = completar(new Date().getYear(), 4, "0");
-#	- Os 2 campos comparados agora são marcados em caso de diferença;
-#	- Corrigido um bug com campos radio e checkbox que, quando passavam pela validação, anulavam as verificações de erro anteriores;
+#	- Os 2 campos comparados agora sao marcados em caso de diferenca;
+#	- Corrigido um bug com campos radio e checkbox que, quando passavam pela validacao, anulavam as verificacoes de erro anteriores;
 #
 # Versão 2.1 - Agosto de 2010
-# 	- Corrigido o problema com CPF's e CNPJ's válidos dados como inválidos;
-# 	- Agora é permitido utilizar as validações de formato, etc., sem o campo ser obrigatório
+# 	- Corrigido o problema com CPF's e CNPJ's validos dados como invalidos;
+# 	- Agora e permitido utilizar as validacoes de formato, etc., sem o campo ser obrigatorio
