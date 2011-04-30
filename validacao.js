@@ -645,7 +645,7 @@ function limitarEntrada(campo, event, expressao) {
 */
 function limitaTextarea(campo, event) {
 	var e = (!window.event) ? event : window.event;
-	var limite = Number((campo.maxlength) ? campo.maxlength : campo.attributes.maxlength);
+	var limite = Number((campo.maxlength) ? campo.maxlength : campo.attributes.maxlength.value);
 	var total = campo.value.length;
 	
 	if (e.type == "keyup") total += 1;
