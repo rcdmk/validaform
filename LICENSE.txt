@@ -1,4 +1,4 @@
-# LICENÇA
+# LICENï¿½A
 # 	Creative Commons License
 # 	CC - BY SA
 #	http://www.creativecommons.org/licenses/by-sa/3.0/
@@ -8,9 +8,9 @@
 #			- copiar, compartilhar, distribuir e transmitir o trabalho.
 #			- adaptar o trabalho.
 # 
-#		Sobre as condições:
-#	 		- Atribuição: Você precisa atribuir o rabalho da mesma maneira especificada pelo autor ou licenciador (mas não de uma maneira que sugira que estes endoçam você ou o seu uso do trabalho).
-#			- Compartilhar igualmente: Se você alterar, transformar ou construir um trabalho sobre este, você precisa distribuir o trabalho resultante sob a mesma licença ou uma similar a esta.
+#		Sobre as condiï¿½ï¿½es:
+#	 		- Atribuiï¿½ï¿½o: Vocï¿½ precisa atribuir o rabalho da mesma maneira especificada pelo autor ou licenciador (mas nï¿½o de uma maneira que sugira que estes endoï¿½am vocï¿½ ou o seu uso do trabalho).
+#			- Compartilhar igualmente: Se vocï¿½ alterar, transformar ou construir um trabalho sobre este, vocï¿½ precisa distribuir o trabalho resultante sob a mesma licenï¿½a ou uma similar a esta.
 #
 #	EN
 #		You are free:
@@ -20,4 +20,5 @@
 #		Under the following conditions:
 #			- Attribution: You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work). 
 #			- Share Alike: If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
+#
 #
