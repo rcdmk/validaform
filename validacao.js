@@ -1,8 +1,15 @@
 ﻿/*
 * VALIDAÇÃO GERAL DE FORMULÁRIOS POR RCDMK - Agosto de 2010
+* https://www,github.com/rcdmk/validaform
 *
+* TODO:
+*	- Poder utilizar qualquer combinação de validações em um mesmo campo;
+*	- Validar se o campo tem somente números, ou somente letras;
+*	- Validar nível de senha;
+*	- Validar url;
+
 * USO das validações
-* Insira um atributo "rel" no campo para validar:
+*  Insira um atributo "rel" no campo para validar:
 * 	- Preenchimento obigatório: o primeiro caractere do atributo tem que ser um # e o restante, separado por um espaço, será utilizado na mensagem de erro. Ex.: rel="# o nome do campo"
 * 	- Validação de e-mail: o segundo caractere do atributo tem que ser @. Ex.: rel="#@ o e-mail de contato" (obrigatório) ou rel=" @ o e-mail de contato" (não obrigatório)
 * 	- Validação de CPF: o segundo caractere tem que ser F (de pessoa Física);
@@ -14,24 +21,6 @@
 * 	Creative Commons License
 * 	CC - BY SA
 *	http://www.creativecommons.org/licenses/by-sa/3.0/
-*	
-*	PT-BR
-*		Livre para:
-*			- copiar, compartilhar, distribuir e transmitir o trabalho.
-*			- adaptar o trabalho.
-* 
-*		Sobre as condições:
-*	 		- Atribuição: Você precisa atribuir o rabalho da mesma maneira especificada pelo autor ou licenciador (mas não de uma maneira que sugira que estes endoçam você ou o seu uso do trabalho).
-*			- Compartilhar igualmente: Se você alterar, transformar ou construir um trabalho sobre este, você precisa distribuir o trabalho resultante sob a mesma licença ou uma similar a esta.
-*
-*	EN
-*		You are free:
-*			- to copy, share, distribute and transmit the work.
-*			- to adapt the work.
-* 
-*		Under the following conditions:
-*			- Attribution: You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work). 
-*			- Share Alike: If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
 *
 */
 
@@ -259,12 +248,6 @@ function validaform(formulario){
 		}
 	}
 	
-	if (window.event) {
-		window.event.returnValue = pass;
-		
-	} else if (event) {
-		event.returnValue = pass;
-	}
 	
 	return pass;
 }
@@ -644,7 +627,7 @@ function limitarEntrada(campo, event, expressao) {
 */
 function limitaTextarea(campo, event) {
 	var e = (!window.event) ? event : window.event;
-	var limite = Number((campo.maxlength) ? campo.maxlength : campo.attributes.maxlength);
+	var limite = Number((campo.maxlength) ? campo.maxlength : (campo.attributes && campo.attributes.maxlength) ? campo.attributes.maxlength.value : campo.maxLength);
 	var total = campo.value.length;
 	
 	if (e.type == "keyup") total += 1;
@@ -730,4 +713,11 @@ if (!String.prototype.trim) {
 		return this.replace(/(^\s+)|(\s+$)/g, "");
 	}
 }
+
+/*
+* Habilitar o cache de imagens de fundo para o IE 6
+*/
+ try {
+	document.execCommand("BackgroundImageCache",false,true);
+} catch(e) { };
 /* ### FIM UTILIDADES ### */

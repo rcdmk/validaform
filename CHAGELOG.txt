@@ -1,5 +1,8 @@
-# Versão 2.5 - Março de 2011
-#	- Corrigido um bug com a função de validação de data nos browser não IE;
+# Versão 2.6 - Março de 2011
+#	- Corrigido um bug com a função de validação de data no Firefox;
+#
+# Versao 2.5 - Marco de 2011
+#	- Corrigido um bug com a funcao de validacao de data nos browser nao IE;
 #
 # Versão 2.4 - Janeiro de 2011
 #	- Adicionada uma função para limitar textareas, chamada limitaTextarea;
